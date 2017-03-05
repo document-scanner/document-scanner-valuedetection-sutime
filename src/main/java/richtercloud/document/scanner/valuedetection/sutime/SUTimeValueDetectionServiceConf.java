@@ -63,4 +63,9 @@ public class SUTimeValueDetectionServiceConf implements ValueDetectionServiceCon
             }
         }
     }
+
+    @Override
+    public String getDescription() {
+        return "Time and date detection based on SUTime library functions (more efficient than plain date detection service)";
+    }
 }
