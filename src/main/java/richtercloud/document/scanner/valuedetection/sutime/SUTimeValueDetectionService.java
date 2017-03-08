@@ -52,6 +52,9 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
     }
     private final static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
+    public SUTimeValueDetectionService(SUTimeValueDetectionServiceConf serviceConf) {
+    }
+
     @Override
     protected LinkedHashSet<ValueDetectionResult<Date>> fetchResults0(String input) {
         LinkedHashSet<ValueDetectionResult<Date>> retValue = new LinkedHashSet<>();
