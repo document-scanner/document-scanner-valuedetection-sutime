@@ -11,6 +11,13 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <corenlp.version>3.6.0</corenlp.version>
+            <!-- 3.7.0 seems to cause `NullPointerException` at
+                `richtercloud.document.scanner.valuedetection.sutime.
+                SUTimeValueDetectionServiceConfFactory.createService(
+                SUTimeValueDetectionServiceConfFactory.java:27)` because of
+                `de.jollyday.configuration.impl.DefaultConfigurationProvider.
+                getProperties(DefaultConfigurationProvider.java:59)` -->
     </properties>
     <dependencies>
         <!-- document-scanner dependencies -->
@@ -22,7 +29,7 @@
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
-            <version>3.6.0</version>
+            <version>${corenlp.version}</version>
         </dependency>
         <!-- corenlp models have about 400 MB in the resulting .deb and .dmg
         files, but are necessary for SUTimeAutoOCRValueDetectionService to not
@@ -33,14 +40,38 @@
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
-            <version>3.6.0</version>
+            <version>${corenlp.version}</version>
             <classifier>models</classifier>
         </dependency>
         <dependency>
             <groupId>edu.stanford.nlp</groupId>
             <artifactId>stanford-corenlp</artifactId>
-            <version>3.6.0</version>
+            <version>${corenlp.version}</version>
             <classifier>models-chinese</classifier>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${corenlp.version}</version>
+            <classifier>models-english</classifier>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${corenlp.version}</version>
+            <classifier>models-french</classifier>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${corenlp.version}</version>
+            <classifier>models-german</classifier>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>${corenlp.version}</version>
+            <classifier>models-spanish</classifier>
         </dependency>
     </dependencies>
     <build>
