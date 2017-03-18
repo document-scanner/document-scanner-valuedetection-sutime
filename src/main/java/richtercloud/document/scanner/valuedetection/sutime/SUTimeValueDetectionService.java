@@ -23,12 +23,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import richtercloud.document.scanner.valuedetectionservice.AbstractValueDetectionService;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
+import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceListener;
+import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceUpdateEvent;
 import richtercloud.document.scanner.valuedetectionservice.annotations.ConfPanel;
 
 /**
@@ -62,6 +65,7 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
         annotation.set(CoreAnnotations.DocDateAnnotation.class, "2013-07-14"); //@TODO: ??
         PIPELINE.annotate(annotation);
         List<CoreMap> timexAnnsAll = annotation.get(TimeAnnotations.TimexAnnotations.class);
+        int progressCounter=0;
         for (CoreMap coreMap : timexAnnsAll) {
             String oCRSource = coreMap.toString();
             Date value;
@@ -86,6 +90,13 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
                     value
             );
             retValue.add(result);
+            //it's not clear, what timexAnnsAll stand for and whether they even
+            //remotely represent the progress, but they're the base for the main
+            //loop of the method, so using them is better than nothing
+            for(ValueDetectionServiceListener<Date> listener : getListeners()) {
+                listener.onUpdate(new ValueDetectionServiceUpdateEvent<>(new LinkedList<>(retValue), timexAnnsAll.size(), progressCounter));
+            }
+            progressCounter++;
         }
         return retValue;
     }
