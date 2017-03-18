@@ -22,13 +22,13 @@ import java.util.LinkedList;
 import java.util.List;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConf;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfValidationException;
-import richtercloud.document.scanner.valuedetectionservice.annotations.ConfFactory;
+import richtercloud.document.scanner.valuedetectionservice.annotations.Factory;
 
 /**
  *
  * @author richter
  */
-@ConfFactory(confFactoryClass = SUTimeValueDetectionServiceConfFactory.class)
+@Factory(confFactoryClass = SUTimeValueDetectionServiceFactory.class)
 public class SUTimeValueDetectionServiceConf implements ValueDetectionServiceConf {
     private static final long serialVersionUID = 1L;
     private List<String> modelJARPathes;

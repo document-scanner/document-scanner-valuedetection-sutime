@@ -14,13 +14,13 @@
  */
 package richtercloud.document.scanner.valuedetection.sutime;
 
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfFactory;
+import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceFactory;
 
 /**
  *
  * @author richter
  */
-public class SUTimeValueDetectionServiceConfFactory implements ValueDetectionServiceConfFactory<SUTimeValueDetectionService, SUTimeValueDetectionServiceConf> {
+public class SUTimeValueDetectionServiceFactory implements ValueDetectionServiceFactory<SUTimeValueDetectionService, SUTimeValueDetectionServiceConf> {
 
     @Override
     public SUTimeValueDetectionService createService(SUTimeValueDetectionServiceConf serviceConf) {
