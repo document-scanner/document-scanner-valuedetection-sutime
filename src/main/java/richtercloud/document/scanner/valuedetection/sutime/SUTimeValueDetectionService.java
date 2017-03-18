@@ -32,7 +32,7 @@ import richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
 import richtercloud.document.scanner.valuedetectionservice.annotations.ConfPanel;
 
 /**
- * An {@link AutoOCRValueDetectionService} which uses the <a href=""></a>.
+ * An {@link ValueDetectionService} which uses the <a href=""></a>.
  * @author richter
  */
 @ConfPanel(confPanelClass = SUTimeValueDetectionServiceConfPanel.class)
