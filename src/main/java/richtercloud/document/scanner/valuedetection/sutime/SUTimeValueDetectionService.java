@@ -55,6 +55,16 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
     }
     private final static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
+    /**
+     * Parameterless constructor for Java SPI initialization.
+     */
+    /*
+    internal implementation notes:
+    - needs to be public in order to avoid instantiation exception
+    */
+    public SUTimeValueDetectionService() {
+    }
+
     public SUTimeValueDetectionService(SUTimeValueDetectionServiceConf serviceConf) {
     }
 
