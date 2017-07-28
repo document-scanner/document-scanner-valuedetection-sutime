@@ -21,15 +21,19 @@ import edu.stanford.nlp.time.SUTime.Temporal;
 import edu.stanford.nlp.util.CoreMap;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import richtercloud.document.scanner.valuedetectionservice.AbstractValueDetectionService;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
+import richtercloud.document.scanner.valuedetectionservice.ValueDetectionService;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceListener;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceUpdateEvent;
 import richtercloud.document.scanner.valuedetectionservice.annotations.ConfPanel;
@@ -41,6 +45,11 @@ import richtercloud.document.scanner.valuedetectionservice.annotations.ConfPanel
 @ConfPanel(confPanelClass = SUTimeValueDetectionServiceConfPanel.class)
 public class SUTimeValueDetectionService extends AbstractValueDetectionService<Date> {
     private final static Logger LOGGER = LoggerFactory.getLogger(SUTimeValueDetectionService.class);
+    public final static Set<String> SUPPORTED_LANGUAGES = new HashSet<>(Arrays.asList(ValueDetectionService.LANGUAGE_CHINESE,
+            ValueDetectionService.LANGUAGE_ENGLISH,
+            ValueDetectionService.LANGUAGE_FRENCH,
+            ValueDetectionService.LANGUAGE_GERMAN,
+            ValueDetectionService.LANGUAGE_SPANISH));
     /**
      * The {@code SUTime} pipeline used for date and time value discovery. Is
      * reusage according to class javadoc.
@@ -53,7 +62,7 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
         PIPELINE.addAnnotator(new POSTaggerAnnotator(false));
         PIPELINE.addAnnotator(new TimeAnnotator("sutime", props));
     }
-    private final static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    protected final static SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * Parameterless constructor for Java SPI initialization.
@@ -66,10 +75,16 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
     }
 
     @Override
-    protected LinkedHashSet<ValueDetectionResult<Date>> fetchResults0(String input) {
+    protected LinkedHashSet<ValueDetectionResult<Date>> fetchResults0(String input,
+            String languageIdentifier) {
+        if(!supportsLanguage(languageIdentifier)) {
+            throw new IllegalArgumentException(String.format(
+                    "language '%s' isn't supported", languageIdentifier));
+        }
         LinkedHashSet<ValueDetectionResult<Date>> retValue = new LinkedHashSet<>();
         Annotation annotation = new Annotation(input);
-        annotation.set(CoreAnnotations.DocDateAnnotation.class, "2013-07-14"); //@TODO: ??
+        String currentTime = SIMPLE_DATE_FORMAT.format( System.currentTimeMillis() );
+        annotation.set(CoreAnnotations.DocDateAnnotation.class, currentTime);
         PIPELINE.annotate(annotation);
         List<CoreMap> timexAnnsAll = annotation.get(TimeAnnotations.TimexAnnotations.class);
         int progressCounter=0;
@@ -86,7 +101,7 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
             }
             try {
                 value = SIMPLE_DATE_FORMAT.parse(temporal.getRange().begin().toString());
-            } catch (ParseException ex) {
+            } catch (ParseException | NumberFormatException ex) {
                 //Something like `Caused by: java.text.ParseException: Unparseable date: "716-XX-XX"`
                 //can happen @TODO: figure out
                 LOGGER.error(String.format("an unexpected exception occured during: %s", ex.getMessage()));
@@ -96,6 +111,8 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
             ValueDetectionResult<Date> result = new ValueDetectionResult<>(oCRSource,
                     value
             );
+            LOGGER.trace(String.format("added result %s",
+                    result));
             retValue.add(result);
             //it's not clear, what timexAnnsAll stand for and whether they even
             //remotely represent the progress, but they're the base for the main
@@ -106,5 +123,10 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
             progressCounter++;
         }
         return retValue;
+    }
+
+    @Override
+    public boolean supportsLanguage(String languageIdentifier) {
+        return SUPPORTED_LANGUAGES.contains(languageIdentifier);
     }
 }
