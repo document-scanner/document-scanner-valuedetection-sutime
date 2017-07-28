@@ -24,7 +24,7 @@ public class SUTimeValueDetectionServiceFactory implements ValueDetectionService
 
     @Override
     public SUTimeValueDetectionService createService(SUTimeValueDetectionServiceConf serviceConf) {
-        SUTimeValueDetectionService retValue = new SUTimeValueDetectionService(serviceConf);
+        SUTimeValueDetectionService retValue = new SUTimeValueDetectionService();
         return retValue;
     }
 }

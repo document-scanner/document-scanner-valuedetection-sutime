@@ -118,6 +118,7 @@ public class SUTimeValueDetectionServiceConfPanel extends ValueDetectionServiceC
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         SUTimeValueDetectionServiceModelAddDialog addDialog = new SUTimeValueDetectionServiceModelAddDialog(SwingUtilities.getWindowAncestor(this),
                 messageHandler);
@@ -132,10 +133,12 @@ public class SUTimeValueDetectionServiceConfPanel extends ValueDetectionServiceC
         this.serviceConf.getModelJARPathes().add(addedPath);
     }//GEN-LAST:event_addButtonActionPerformed
 
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         JOptionPane.showConfirmDialog(this, "Not supported, yet -> remove and add new");
     }//GEN-LAST:event_editButtonActionPerformed
 
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         Object selectedModel = modelList.getSelectedValue();
         this.modelListModel.removeElement(selectedModel);

@@ -65,9 +65,6 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
     public SUTimeValueDetectionService() {
     }
 
-    public SUTimeValueDetectionService(SUTimeValueDetectionServiceConf serviceConf) {
-    }
-
     @Override
     protected LinkedHashSet<ValueDetectionResult<Date>> fetchResults0(String input) {
         LinkedHashSet<ValueDetectionResult<Date>> retValue = new LinkedHashSet<>();

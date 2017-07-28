@@ -91,8 +91,7 @@ public class SUTimeValueDetectionServiceTest {
         assert !expResult.isEmpty();
         String input = inputBuilder.toString();
         LOGGER.trace(String.format("input: %s", input));
-        SUTimeValueDetectionServiceConf valueDetectionServiceConf = new SUTimeValueDetectionServiceConf();
-        SUTimeValueDetectionService instance = new SUTimeValueDetectionService(valueDetectionServiceConf);
+        SUTimeValueDetectionService instance = new SUTimeValueDetectionService();
         LinkedHashSet<ValueDetectionResult<Date>> result = instance.fetchResults0(input);
         //The detection service might randomly recognize more dates which is not
         //a problem

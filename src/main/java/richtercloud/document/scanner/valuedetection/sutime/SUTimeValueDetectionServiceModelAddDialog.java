@@ -124,10 +124,12 @@ public class SUTimeValueDetectionServiceModelAddDialog extends javax.swing.JDial
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         String addedPath = pathTextField.getText();
         if(!new File(addedPath).exists()) {
@@ -140,6 +142,7 @@ public class SUTimeValueDetectionServiceModelAddDialog extends javax.swing.JDial
         this.setVisible(false);
     }//GEN-LAST:event_addButtonActionPerformed
 
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseButtonActionPerformed
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(

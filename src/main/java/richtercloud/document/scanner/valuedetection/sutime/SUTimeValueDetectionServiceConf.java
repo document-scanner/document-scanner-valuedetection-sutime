@@ -14,10 +14,6 @@
  */
 package richtercloud.document.scanner.valuedetection.sutime;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.LinkedList;
 import java.util.List;
 import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConf;
@@ -56,14 +52,6 @@ public class SUTimeValueDetectionServiceConf implements ValueDetectionServiceCon
                     + "model JAR pathes is empty");
         }
         //@TODO: figure out validation
-        for(String modelJARPath : modelJARPathes) {
-            try {
-                ClassLoader testClassLoader = new URLClassLoader(new URL[] {new File(modelJARPath).toURI().toURL()},
-                        Thread.currentThread().getContextClassLoader());
-            } catch (MalformedURLException ex) {
-                throw new ValueDetectionServiceConfValidationException(ex);
-            }
-        }
     }
 
     @Override
