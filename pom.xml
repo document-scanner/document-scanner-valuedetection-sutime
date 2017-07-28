@@ -11,13 +11,18 @@
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <corenlp.version>3.6.0</corenlp.version>
+        <corenlp.version>3.8.0</corenlp.version>
             <!-- 3.7.0 seems to cause `NullPointerException` at
                 `richtercloud.document.scanner.valuedetection.sutime.
                 SUTimeValueDetectionServiceConfFactory.createService(
                 SUTimeValueDetectionServiceConfFactory.java:27)` because of
                 `de.jollyday.configuration.impl.DefaultConfigurationProvider.
-                getProperties(DefaultConfigurationProvider.java:59)` -->
+                getProperties(DefaultConfigurationProvider.java:59)`
+                - 3.6.x needs `com.google.protobuf:protobuf-java:3.0.2`
+                in order to avoid
+                `java.lang.NoClassDefFoundError: com/google/protobuf/GeneratedMessage$ExtendableMessageOrBuilder`
+                which is fixed in 3.7.0, see for details
+                https://github.com/sergey-tihon/Stanford.NLP.NET/issues/44 -->
     </properties>
     <dependencies>
         <!-- document-scanner dependencies -->
