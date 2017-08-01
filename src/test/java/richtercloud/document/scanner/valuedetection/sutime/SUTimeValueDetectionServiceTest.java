@@ -101,7 +101,15 @@ public class SUTimeValueDetectionServiceTest {
                             calendar.setTime(new Date(RANDOM.nextLong()));
                             calendar.set(Calendar.YEAR, RANDOM.nextInt(maxYear));
                             Date date = calendar.getTime();
-                            String dateFormatted = SUTimeValueDetectionService.SIMPLE_DATE_FORMAT.format(date);
+                            String dateFormatted;
+                            try {
+                                dateFormatted = SUTimeValueDetectionService.SIMPLE_DATE_FORMAT.format(date);
+                            }catch(ArrayIndexOutOfBoundsException ex) {
+                                //need to figure what why and when this happens
+                                LOGGER.error("unexpected exception during formatting of date occured",
+                                        ex);
+                                throw ex;
+                            }
                             expResult.add(new ValueDetectionResult<>(dateFormatted, date));
                             if(!addExtra) {
                                 inputBuilder.append(dateFormatted);

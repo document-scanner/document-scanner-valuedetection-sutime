@@ -101,9 +101,12 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
             }
             try {
                 value = SIMPLE_DATE_FORMAT.parse(temporal.getRange().begin().toString());
-            } catch (ParseException | NumberFormatException ex) {
-                //Something like `Caused by: java.text.ParseException: Unparseable date: "716-XX-XX"`
+            } catch (ParseException | NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+                //- something like `Caused by: java.text.ParseException: Unparseable date: "716-XX-XX"`
                 //can happen @TODO: figure out
+                //- ArrayIndexOutOfBoundsException can happen at
+                //`java.text.DigitList.fitsIntoLong(DigitList.java:230)` for
+                //unknown reasons
                 LOGGER.error(String.format("an unexpected exception occured during: %s", ex.getMessage()));
                     //don't log stacktrace because it's confusing in output
                 continue;
