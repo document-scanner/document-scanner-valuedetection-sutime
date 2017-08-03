@@ -106,7 +106,8 @@ public class SUTimeValueDetectionServiceTest {
                                 dateFormatted = SUTimeValueDetectionService.SIMPLE_DATE_FORMAT.format(date);
                             }catch(ArrayIndexOutOfBoundsException ex) {
                                 //need to figure what why and when this happens
-                                LOGGER.error("unexpected exception during formatting of date occured",
+                                LOGGER.error(String.format("unexpected exception during formatting of date '%s' occured",
+                                        date.toString()),
                                         ex);
                                 throw ex;
                             }
