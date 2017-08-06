@@ -98,7 +98,8 @@ public class SUTimeValueDetectionServiceTest {
                             boolean addExtra = RANDOM.nextBoolean();
                                 //whether to add the date into a word or as a separate word
                             Calendar calendar = Calendar.getInstance();
-                            calendar.setTime(new Date(RANDOM.nextLong()));
+                            long dateValue = RANDOM.nextLong();
+                            calendar.setTime(new Date(dateValue));
                             calendar.set(Calendar.YEAR, RANDOM.nextInt(maxYear));
                             Date date = calendar.getTime();
                             String dateFormatted;
@@ -106,8 +107,12 @@ public class SUTimeValueDetectionServiceTest {
                                 dateFormatted = SUTimeValueDetectionService.SIMPLE_DATE_FORMAT.format(date);
                             }catch(ArrayIndexOutOfBoundsException ex) {
                                 //need to figure what why and when this happens
-                                LOGGER.error(String.format("unexpected exception during formatting of date '%s' occured",
-                                        date.toString()),
+                                LOGGER.error(String.format("unexpected "
+                                        + "exception during formatting of date "
+                                        + "'%s' initialized with date value "
+                                        + "%d occured",
+                                        date.toString(),
+                                        dateValue),
                                         ex);
                                 throw ex;
                             }
