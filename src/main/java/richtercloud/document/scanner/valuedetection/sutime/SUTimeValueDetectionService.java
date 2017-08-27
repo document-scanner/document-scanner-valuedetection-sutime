@@ -19,6 +19,7 @@ import edu.stanford.nlp.pipeline.*;
 import edu.stanford.nlp.time.*;
 import edu.stanford.nlp.time.SUTime.Temporal;
 import edu.stanford.nlp.util.CoreMap;
+import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -131,5 +132,11 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
     @Override
     public boolean supportsLanguage(String languageIdentifier) {
         return SUPPORTED_LANGUAGES.contains(languageIdentifier);
+    }
+
+    @Override
+    public boolean supportsField(Field field) {
+        boolean retValue = Date.class.isAssignableFrom(field.getType());
+        return retValue;
     }
 }
