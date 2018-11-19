@@ -12,13 +12,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package richtercloud.document.scanner.valuedetection.sutime;
+package de.richtercloud.document.scanner.valuedetection.sutime;
 
 import java.util.LinkedList;
 import java.util.List;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConf;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfValidationException;
-import richtercloud.document.scanner.valuedetectionservice.annotations.Factory;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConf;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfValidationException;
+import de.richtercloud.document.scanner.valuedetectionservice.annotations.Factory;
 
 /**
  *

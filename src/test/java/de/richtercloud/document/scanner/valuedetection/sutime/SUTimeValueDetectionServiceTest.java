@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package richtercloud.document.scanner.valuedetection.sutime;
+package de.richtercloud.document.scanner.valuedetection.sutime;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -32,8 +32,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionService;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionService;
 
 /**
  *

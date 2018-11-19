@@ -12,7 +12,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package richtercloud.document.scanner.valuedetection.sutime;
+package de.richtercloud.document.scanner.valuedetection.sutime;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.*;
@@ -32,12 +32,12 @@ import java.util.Properties;
 import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import richtercloud.document.scanner.valuedetectionservice.AbstractValueDetectionService;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionService;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceListener;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceUpdateEvent;
-import richtercloud.document.scanner.valuedetectionservice.annotations.ConfPanel;
+import de.richtercloud.document.scanner.valuedetectionservice.AbstractValueDetectionService;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionResult;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionService;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceListener;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceUpdateEvent;
+import de.richtercloud.document.scanner.valuedetectionservice.annotations.ConfPanel;
 
 /**
  * An {@link ValueDetectionService} which uses the <a href=""></a>.

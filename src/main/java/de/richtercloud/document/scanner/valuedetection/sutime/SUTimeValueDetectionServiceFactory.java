@@ -12,9 +12,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package richtercloud.document.scanner.valuedetection.sutime;
+package de.richtercloud.document.scanner.valuedetection.sutime;
 
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceFactory;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceFactory;
 
 /**
  *

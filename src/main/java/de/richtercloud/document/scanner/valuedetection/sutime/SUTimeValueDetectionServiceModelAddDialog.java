@@ -12,15 +12,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package richtercloud.document.scanner.valuedetection.sutime;
+package de.richtercloud.document.scanner.valuedetection.sutime;
 
 import java.awt.Window;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import richtercloud.message.handler.Message;
-import richtercloud.message.handler.MessageHandler;
+import de.richtercloud.message.handler.Message;
+import de.richtercloud.message.handler.MessageHandler;
 
 /**
  *

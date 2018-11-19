@@ -12,14 +12,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package richtercloud.document.scanner.valuedetection.sutime;
+package de.richtercloud.document.scanner.valuedetection.sutime;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfPanel;
-import richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfValidationException;
-import richtercloud.message.handler.MessageHandler;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfPanel;
+import de.richtercloud.document.scanner.valuedetectionservice.ValueDetectionServiceConfValidationException;
+import de.richtercloud.message.handler.MessageHandler;
 
 /**
  *
