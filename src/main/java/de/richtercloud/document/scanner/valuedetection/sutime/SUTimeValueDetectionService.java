@@ -90,6 +90,9 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
         List<CoreMap> timexAnnsAll = annotation.get(TimeAnnotations.TimexAnnotations.class);
         int progressCounter=0;
         for (CoreMap coreMap : timexAnnsAll) {
+            if(isCanceled()) {
+                return null;
+            }
             String oCRSource = coreMap.toString();
             Date value;
             Temporal temporal = coreMap.get(TimeExpression.Annotation.class).getTemporal();
@@ -125,6 +128,9 @@ public class SUTimeValueDetectionService extends AbstractValueDetectionService<D
                 listener.onUpdate(new ValueDetectionServiceUpdateEvent<>(new LinkedList<>(retValue), timexAnnsAll.size(), progressCounter));
             }
             progressCounter++;
+        }
+        if(isCanceled()) {
+            return null;
         }
         return retValue;
     }
